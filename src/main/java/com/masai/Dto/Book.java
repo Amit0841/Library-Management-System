@@ -2,6 +2,7 @@ package com.masai.Dto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Book {
@@ -11,15 +12,16 @@ public class Book {
 	private String author;
 	private double rentPrice;
     private boolean availability;
-    private int adminId;
+    @ManyToOne
+    private Librarian adminId;
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Book(String bookId, String bookOTitle, String author, double rentPrice, boolean availability, int adminId) {
+	public Book(String bookId, String bookTitle, String author, double rentPrice, boolean availability, Librarian adminId) {
 		super();
 		this.bookId = bookId;
-		this.bookTitle = bookOTitle;
+		this.bookTitle = bookTitle;
 		this.author = author;
 		this.rentPrice = rentPrice;
 		this.availability = availability;
@@ -31,11 +33,11 @@ public class Book {
 	public void setBookId(String bookId) {
 		this.bookId = bookId;
 	}
-	public String getBookOTitle() {
+	public String getBookTitle() {
 		return bookTitle;
 	}
-	public void setBookOTitle(String bookOTitle) {
-		this.bookTitle = bookOTitle;
+	public void setBookTitle(String bookTitle) {
+		this.bookTitle = bookTitle;
 	}
 	public String getAuthor() {
 		return author;
@@ -55,15 +57,15 @@ public class Book {
 	public void setAvailability(boolean availability) {
 		this.availability = availability;
 	}
-	public int getAdminId() {
+	public Librarian getAdminId() {
 		return adminId;
 	}
-	public void setAdminId(int adminId) {
+	public void setAdminId(Librarian adminId) {
 		this.adminId = adminId;
 	}
 	@Override
 	public String toString() {
-		return "Book [bookId=" + bookId + ", bookOTitle=" + bookTitle + ", author=" + author + ", rentPrice="
+		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", author=" + author + ", rentPrice="
 				+ rentPrice + ", availability=" + availability + ", adminId=" + adminId + "]";
 	}
 	
