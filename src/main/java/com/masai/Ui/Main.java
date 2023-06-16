@@ -7,16 +7,13 @@ import java.util.Scanner;
 import com.masai.Dao.DaoImpel;
 import com.masai.Dao.DaoInterface;
 import com.masai.Dto.Book;
+import com.masai.Dto.Feedback;
 import com.masai.Dto.Librarian;
-
+import com.masai.Dto.RentBooks;
 import com.masai.Dto.Student;
 import com.masai.Exception.NoRecordFound;
 import com.masai.Exception.SomethingWentWrong;
 
-/**
- * @author asus
- *
- */
 public class Main {
 
 	public static void main(String[] args) {
@@ -94,16 +91,60 @@ public class Main {
 		System.out.println("2. Apply Filter");
 		System.out.println("3. Rent a book");
 		System.out.println("4. Provide feedback and ratings");
+		System.out.println("5. Return Book");
 		System.out.println("0. Log out");
 		c=sc.nextInt();
 		switch(c) {
 		case 1 -> viewAvailable();
 		case 2 -> applyFilter(sc);
 		case 3 -> rBook(sc ,id);
-		
+		case 4 -> giveFeetback(sc);
+		case 5 -> returnBook(sc,id);
 		}
 	}while(c!=0);
 	System.out.println("*Student Log out*");	
+	}
+static void rb(int id) {
+	 DaoInterface d=new DaoImpel();
+	 try {
+		List <RentBooks>b=d.getBook(id);
+		b.forEach(a->System.out.println("Book Id="+a.getBi()));
+	} catch (SomethingWentWrong | NoRecordFound e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+private static void returnBook(Scanner sc, int id) {
+	rb(id);
+	System.out.println("Enter Book Id");
+	String bId=sc.next();
+	 DaoInterface d=new DaoImpel();
+		try {
+			d.returnBook(bId);
+			 
+		} catch (SomethingWentWrong | NoRecordFound e) {
+			System.out.println(e);
+		}
+	}
+
+
+private static void giveFeetback(Scanner sc) {
+	viewAvailable();
+	System.out.println("Enter Book Id");
+	String bId=sc.next();
+	System.out.println("Enter your Massage");
+	String massage=sc.next();
+	System.out.println("Enter Book Rating");
+	double rating=sc.nextDouble();
+
+	 DaoInterface d=new DaoImpel();
+		try {
+			 d.giveF(bId, massage, rating);
+			 
+		} catch (SomethingWentWrong | NoRecordFound e) {
+			System.out.println(e);
+		}
 	}
 
 
@@ -294,7 +335,8 @@ private static void viewAvailable() {
 		
 		DaoInterface d=new DaoImpel();
 		try {
-			d.viewBookq();
+			List <Feedback> list=d.viewBookq();
+			list.forEach(a->System.out.println(a));
 		} catch (SomethingWentWrong | NoRecordFound e) {
 			e.printStackTrace();
 		}
@@ -329,7 +371,7 @@ private static void viewAvailable() {
 		DaoInterface d=new DaoImpel();
 		try {
 			d.upateRent(price,Bid);
-			System.out.println("*Update Successfully*");
+			System.out.println("* Update Successfully *");
 		} catch (SomethingWentWrong | NoRecordFound e) {
 			// TODO Auto-generated catch block
 			System.out.println(e);
@@ -342,7 +384,7 @@ private static void viewAvailable() {
 		DaoInterface d=new DaoImpel();
 		try {
 			d.removeBook(Bid);
-			System.out.println("*Remove Successfully*");
+			System.out.println("* Remove Successfully *");
 		} catch (SomethingWentWrong | NoRecordFound e) {
 			// TODO Auto-generated catch block
 			System.out.println(e);

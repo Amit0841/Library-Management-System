@@ -4,8 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.masai.Dto.Book;
+import com.masai.Dto.Feedback;
 import com.masai.Dto.Librarian;
-
+import com.masai.Dto.RentBooks;
 import com.masai.Dto.Student;
 import com.masai.Exception.NoRecordFound;
 import com.masai.Exception.SomethingWentWrong;
@@ -40,7 +41,13 @@ public interface DaoInterface {
 
 	void rentBook(String bookId, LocalDate da, LocalDate date, int id) throws SomethingWentWrong, NoRecordFound;
 
-	void viewBookq() throws SomethingWentWrong, NoRecordFound;
+	List<Feedback> viewBookq() throws SomethingWentWrong, NoRecordFound;
+
+	void giveF(String bId, String massage, double rating) throws SomethingWentWrong, NoRecordFound;
+
+	List<RentBooks> getBook(int id) throws SomethingWentWrong, NoRecordFound;
+
+	void returnBook(String bId)throws SomethingWentWrong, NoRecordFound  ;
 
 	
 	

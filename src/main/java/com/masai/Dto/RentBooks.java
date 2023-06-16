@@ -56,5 +56,21 @@ public void setRentTo(LocalDate rentTo) {
 	this.rentTo = rentTo;
 }
 
+public Book getBi() {
+	return bi;
+}
+
+public void setBi(Book bi) {
+	this.bi = bi;
+}
+
+public Student getSid() {
+	return Sid;
+}
+
+public void setSid(Student sid) {
+	Sid = sid;
+}
+
 
 }
