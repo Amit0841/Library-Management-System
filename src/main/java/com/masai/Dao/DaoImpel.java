@@ -8,11 +8,13 @@ import java.util.List;
 import org.hibernate.tool.schema.spi.SqlScriptException;
 
 import com.masai.Dto.Book;
+import com.masai.Dto.Feedback;
 import com.masai.Dto.Librarian;
 import com.masai.Dto.RentBooks;
 import com.masai.Dto.Student;
 import com.masai.Exception.NoRecordFound;
 import com.masai.Exception.SomethingWentWrong;
+import com.mysql.cj.x.protobuf.MysqlxCrud.Find;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -346,13 +348,14 @@ EntityManager em=null;
 	}
 
 	@Override
-	public void viewBookq() throws SomethingWentWrong, NoRecordFound {
+	public List<Feedback> viewBookq() throws SomethingWentWrong, NoRecordFound {
     EntityManager em=null;
-		
+    List <Feedback> list=null;
 		try {
 			em=Conection.getConnection();
-			
-			
+			String q="select e from Feedback e";
+			Query que=em.createQuery(q);
+			list=que.getResultList();
             
 		}catch(SqlScriptException e) {
 			throw new SomethingWentWrong("Something Went Wrong");
@@ -360,6 +363,86 @@ EntityManager em=null;
 		finally {
 			em.close();
 		}
+		return list;
+	}
+
+	@Override
+	public void giveF(String bId, String massage, double rating) throws SomethingWentWrong, NoRecordFound {
+		   EntityManager em=null;
+			
+			try {
+				em=Conection.getConnection();
+				Book b=em.find(Book.class, bId);
+				if(b!=null) {
+					Feedback rb=new Feedback(massage,rating,b);
+				EntityTransaction et=em.getTransaction();
+				et.begin();
+				em.persist(rb);
+				et.commit();
+				}else {
+					throw new NoRecordFound("No Record Found");
+				}
+				
+			}catch(SqlScriptException e) {
+				throw new SomethingWentWrong("Something Went Wrong");
+			}
+			finally {
+				em.close();
+			}
+		
+	}
+
+	@Override
+	public List<RentBooks> getBook(int id) throws SomethingWentWrong, NoRecordFound {
+		
+		 EntityManager em=null;
+		 List<RentBooks> book=null;
+		try {
+			em=Conection.getConnection();
+			Student s=em.find(Student.class, id);
+			String q="select e from RentBooks e where Sid =:id1";
+			Query que=em.createQuery(q);
+			que.setParameter("id1", s);
+			book=que.getResultList();
+            
+		}catch(SqlScriptException e) {
+			throw new SomethingWentWrong("Something Went Wrong");
+		}
+		finally {
+			em.close();
+		}
+		return book;
+	}
+
+	@Override
+	public void returnBook(String bId) throws SomethingWentWrong, NoRecordFound {
+		 EntityManager em=null;
+		 
+		try {
+			em=Conection.getConnection();
+			EntityTransaction et=em.getTransaction();
+			Book b=em.find(Book.class, bId);
+			if(b!=null) {
+				et.begin();
+				b.setAvailability(true);
+				String q="delete from RentBooks where bi =:id";
+				Query que=em.createQuery(q);
+				que.setParameter("id", b);
+				
+				et.commit();
+				
+				
+				
+			}else {
+				throw new NoRecordFound("No Record Found ");
+			}
+		}catch(SqlScriptException e) {
+			throw new SomethingWentWrong("Something Went Wrong");
+		}
+		finally {
+			em.close();
+		}
+		
 		
 	}
 
