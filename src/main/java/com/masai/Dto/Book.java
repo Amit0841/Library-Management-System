@@ -27,6 +27,7 @@ public class Book {
 		this.availability = availability;
 		this.adminId = adminId;
 	}
+	
 	public String getBookId() {
 		return bookId;
 	}

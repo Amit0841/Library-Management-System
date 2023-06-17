@@ -48,7 +48,5 @@ public interface DaoInterface {
 	List<RentBooks> getBook(int id) throws SomethingWentWrong, NoRecordFound;
 
 	void returnBook(String bId)throws SomethingWentWrong, NoRecordFound  ;
-
-	
 	
 }

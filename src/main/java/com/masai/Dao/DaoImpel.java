@@ -97,9 +97,11 @@ public class DaoImpel implements DaoInterface{
 			Librarian s=(Librarian) query.getSingleResult();
 			if(s!=null) {
 				id=s.getLibrarianId();
+			}else {
+				 throw new NoRecordFound("No Record Found");
 			}
-		}catch(SqlScriptException k) {
-			 throw new NoRecordFound("Something Went Wrong");
+		}catch(SqlScriptException | NoResultException k) {
+			 throw new NoRecordFound("No Record Found");
 		}
 		finally {
 			em.close();
@@ -417,22 +419,19 @@ EntityManager em=null;
 	@Override
 	public void returnBook(String bId) throws SomethingWentWrong, NoRecordFound {
 		 EntityManager em=null;
-		 
 		try {
 			em=Conection.getConnection();
 			EntityTransaction et=em.getTransaction();
 			Book b=em.find(Book.class, bId);
 			if(b!=null) {
-				et.begin();
-				b.setAvailability(true);
 				String q="delete from RentBooks where bi =:id";
 				Query que=em.createQuery(q);
 				que.setParameter("id", b);
-				
+				et.begin();
+				b.setAvailability(true);
+				int deletedCount = que.executeUpdate();
+				System.out.println("Your Payment Amount Is "+b.getRentPrice());
 				et.commit();
-				
-				
-				
 			}else {
 				throw new NoRecordFound("No Record Found ");
 			}
