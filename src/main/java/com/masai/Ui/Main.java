@@ -27,6 +27,7 @@ public class Main {
 			switch(c){
 			case 1 -> librarian(sc);
 			case 2 -> student(sc);
+			default -> System.out.println("wrong input");
 			}
 		}while(c!=0);
 		sc.close();
@@ -44,6 +45,7 @@ public class Main {
 			switch(c){
 			case 1 -> signInStudent(sc);
 			case 2 -> logInStudent(sc);
+			default -> System.out.println("wrong input");
 			}
 		}while(c!=0);
 	}
@@ -100,6 +102,7 @@ public class Main {
 		case 3 -> rBook(sc ,id);
 		case 4 -> giveFeetback(sc);
 		case 5 -> returnBook(sc,id);
+		default -> System.out.println("wrong input");
 		}
 	}while(c!=0);
 	System.out.println("*Student Log out*");	
@@ -117,6 +120,7 @@ static void rb(int id) {
 
 private static void returnBook(Scanner sc, int id) {
 	rb(id);
+	System.out.println("");
 	System.out.println("Enter Book Id");
 	String bId=sc.next();
 	 DaoInterface d=new DaoImpel();
@@ -188,6 +192,7 @@ private static void applyFilter(Scanner sc) {
 		case 2 -> findByAuthor(sc);
 		case 3 -> asc();
 		case 4 -> desc();
+		default -> System.out.println("wrong input");
 		}
 	}while(c!=0);
 
@@ -250,6 +255,7 @@ private static void viewAvailable() {
 	  DaoInterface d=new DaoImpel();
 		try {
 			List<Book>b= d.viewAvailableBook();
+			System.out.println("");
 			b.forEach(a->System.out.println("Book Id="+a.getBookId()+", Author="+a.getAuthor()+", Book Title="+a.getBookTitle()+", Rent Price="+a.getRentPrice()));
 	
 		} catch (SomethingWentWrong | NoRecordFound e) {
@@ -270,6 +276,7 @@ private static void viewAvailable() {
 			switch(c){
 			case 1 -> signInLibrarian(sc);
 			case 2 -> logInLibrarian(sc);
+			default -> System.out.println("wrong input");
 			}
 		}while(c!=0);
 	}
@@ -326,6 +333,7 @@ private static void viewAvailable() {
 		case 3 -> removeBook(sc);
 		case 4 -> viewBook();
 	    case 5 -> viewFeetback();
+	    default -> System.out.println("wrong input");
 		}
 		}while(c!=0);
 		System.out.println("*LogOut Librarian*");
