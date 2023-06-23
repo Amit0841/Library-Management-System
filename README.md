@@ -13,7 +13,6 @@ The Library Management System is a software solution designed to efficiently man
 <p>7. View feedback and ratings given by students for books.<p/>
 <p>8. Log out from the librarian account.<p/>
 
-
 <h1> Role Of Student </h1>
 <p>1. Register for a student account by providing necessary information.<p/>
 <p>2. Log in to the student account using registered credentials.<p/>
