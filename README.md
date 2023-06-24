@@ -4,6 +4,7 @@
 The Library Management System is a software solution designed to efficiently manage the operations of a library. The system aims to provide users, including librarians and students, with a platform to facilitate book management, rental transactions, and feedback collection. It enables librarians to perform administrative tasks related to books, track the status of student rentals, and view feedback and ratings provided by students. Students can access the system to explore available books, rent books, and provide feedback and ratings on rented books. The system will be developed using Java programming language, MySQL as the database management system, and Hibernate as the Object-Relational Mapping (ORM) framework.
 <h1> Role Of Librarian </h1>
 <p>
+
  
 1. Register for a librarian account by providing necessary information.<p/>
 <p>2. Log in to the librarian account using registered credentials. <p/>
