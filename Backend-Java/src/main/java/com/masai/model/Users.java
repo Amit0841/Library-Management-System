@@ -3,6 +3,7 @@ package com.masai.model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -33,10 +34,11 @@ public class Users {
 	@Email(message = "Email should be in proper format")
 	private String email;
 	@NotNull
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
 	@NotNull
 	private String mobileNumber;
-	
+	private String role;
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<Book> readingLists;
