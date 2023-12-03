@@ -8,20 +8,26 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.masai.model.Book;
 import com.masai.model.Users;
+import com.masai.model.WishList;
 import com.masai.repository.UserRepository;
 import com.masai.service.UserServiceInterface;
 
 import jakarta.validation.Valid;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class UserController {
 	@Autowired
 	private UserServiceInterface serviceInterface;
@@ -35,6 +41,7 @@ public class UserController {
 ResponseEntity<Users> registerUser(@Valid @RequestBody Users user){
 	user.setPassword(passwordEncoder.encode(user.getPassword()));
 	user.setRole("user");
+	System.out.println("working");
 	return new ResponseEntity<Users>(serviceInterface.addUsers(user),HttpStatus.CREATED);
 }
 //user Login
@@ -44,7 +51,12 @@ public ResponseEntity<Users> logInUserHandler(Authentication auth){
 	 
 	 if(opt.isEmpty()) throw new RuntimeException("No user found") ;
 	 Users user = opt.get();
+	 
 	 return new ResponseEntity<Users>(user, HttpStatus.OK);
+}
+@GetMapping("/loginCheck")
+public ResponseEntity<Boolean> logInCheck(){
+	 return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 }
 //get user By userId
 @GetMapping("/users/{userId}")
@@ -53,21 +65,25 @@ public ResponseEntity<Users> getUser(@PathVariable Integer userId){
 	 return new ResponseEntity<Users>(serviceInterface.getUser(userId), HttpStatus.OK);
 }
 //Add Book to user wishList
-@PostMapping("/users/wishList/{userId}/{bookId}")
-ResponseEntity<List<Book>> addBookToWishList(@PathVariable Integer userId,Integer bookId){
-
-	return new ResponseEntity<List<Book>>(serviceInterface.addBookToWishList(userId,bookId),HttpStatus.CREATED);
+@PutMapping("/users/wishList/{userId}/{bookId}")
+ResponseEntity<Book> addBookToWishList(@RequestBody WishList wishList, @PathVariable Integer userId,@PathVariable Integer bookId){
+	return new ResponseEntity<Book>(serviceInterface.addBookToWishList(userId,bookId,wishList),HttpStatus.OK);
 }
 //get Book from user wishList
 @GetMapping("/users/wishList/{userId}")
 ResponseEntity<List<Book>> getBookFromWishList(@PathVariable Integer userId){
-	return new ResponseEntity<List<Book>>(serviceInterface.getBookFromWishList(userId),HttpStatus.CREATED);
+	return new ResponseEntity<List<Book>>(serviceInterface.getBookFromWishList(userId),HttpStatus.OK);
+}
+//get Book from user wishList
+@DeleteMapping("/users/wishList/{userId}/{bookId}")
+ResponseEntity<Book> deleteBookFromWishList(@PathVariable Integer userId,@PathVariable Integer bookId){
+	return new ResponseEntity<Book> (serviceInterface.deleteBookFromWishList(userId,bookId),HttpStatus.CREATED);
 }
 //Add Book to user Reading Lists
-@PostMapping("/users/ReadingList/{userId}/{bookId}")
-ResponseEntity<List<Book>> addBookToReadingList(@PathVariable Integer userId,Integer bookId){
+@GetMapping("/users/ReadingList/{userId}/{bookId}")
+ResponseEntity<List<Book>> addBookToReadingList(@PathVariable Integer userId,@PathVariable Integer bookId){
 
-	return new ResponseEntity<List<Book>>(serviceInterface.addBookToReadingList(userId,bookId),HttpStatus.CREATED);
+	return new ResponseEntity<List<Book>>(serviceInterface.addBookToReadingList(userId,bookId),HttpStatus.OK);
 }
 //get Book from user Reading Lists
 @GetMapping("/users/ReadingList/{userId}")

@@ -34,7 +34,7 @@ public class JwtTokenGeneratorFilter extends OncePerRequestFilter {
 					.claim("email", authentication.getName()) 
 					.claim("authorities", getValue(authentication.getAuthorities())) 
 					.setIssuedAt(new Date())
-					.setExpiration(new Date( new Date().getTime()+20000000))
+					.setExpiration(new Date( new Date().getTime()+2000000000))
 					.signWith(key).compact() ;		
 			 
 			response.setHeader(SecurityDetails.JWT_HEADER, jwt);

@@ -12,6 +12,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -43,7 +44,7 @@ public class Users {
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<Book> readingLists;
 	
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	private List<Book> wishList;
+//	@JsonIgnore
+//	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//	private List<Book> wishList;
 }

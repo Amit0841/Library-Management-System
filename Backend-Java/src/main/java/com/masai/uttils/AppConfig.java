@@ -40,13 +40,15 @@ public class AppConfig {
 					return configuration;
 				}
 			});
-		}) .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST , "users","mail").permitAll()
+		}) .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST , "users", "books").permitAll()
 				.requestMatchers("/swagger-ui*/**","/v3/api-docs/**").permitAll()
-				.requestMatchers(HttpMethod.GET,"/users/**","/books").hasAnyRole("ADMIN", "USER")
-				.requestMatchers(HttpMethod.POST,"/books").hasRole("ADMIN")
-				.requestMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
+				.requestMatchers(HttpMethod.GET,"chat" ,"books","books/**" ).permitAll()
+//				.requestMatchers(HttpMethod.GET,"users/wishList/**" ).permitAll()
+				.requestMatchers(HttpMethod.POST ,"books" ).permitAll()
+//				.requestMatchers(HttpMethod.GET,"/hello","/users").hasRole("ADMIN")
+//				.requestMatchers(HttpMethod.DELETE,"/orders/**").hasRole("ADMIN")
 //				.requestMatchers(HttpMethod.POST, "/suppliers","/categories","/products/**").hasRole("ADMIN")
-				.requestMatchers(HttpMethod.POST,"/logini").hasAnyRole("ADMIN" , "USER")
+				.requestMatchers(HttpMethod.POST,"/logini","/**").hasAnyRole("ADMIN" , "USER")
 //				.requestMatchers(HttpMethod.PUT,"/orders/**").hasRole("USER")
 				.anyRequest().authenticated())
 				.csrf(csrf -> csrf.disable())
