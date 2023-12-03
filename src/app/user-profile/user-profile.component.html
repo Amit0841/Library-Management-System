@@ -1,0 +1,49 @@
+<body>
+    <br><br>
+
+<div class="user-profile">
+    <div class="profile-info">
+
+      <div class="user-image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo-CujXEB_pHNjg6VnEKrUJW-sgY-6glbQhw&usqp=CAU" alt="User Image">
+      </div>
+
+      <div class="user-details">
+        <h1 class="username">{{name}}</h1>
+        <p class="email">Email: {{email}}</p>
+        <p class="mobile">Mobile: {{mobile}}</p>
+        <div class="profile-actions">
+          <button class="edit-button">Edit Profile</button>
+         
+        </div>
+      </div>
+    </div>
+    <div id="userP">
+<div ><h3>ReadingList</h3><i (click)="readingList()" class="fa-solid fa-angles-right"></i></div>
+
+<hr>
+
+<div *ngIf="WishList"><h3>WishList</h3><i (click)="wishList()" class="fa-solid fa-angles-right"></i></div>
+
+<hr>
+<br>
+    </div>
+    <div id="logout">
+     <button (click)="logout()"  class="logout-button">Logout</button></div><br>
+  </div>
+  
+<!--   -->
+  <div *ngIf="!ReadingList" id="lists1">
+    <div id="lists" *ngFor="let item of ReadingListArr">
+  <img [src]="item.image" alt="">
+  <hr>
+  <div class="tiem">
+  <h4>{{item.title}}</h4>
+  <p><b>Author:</b> {{item.author}}</p>
+  <p><b>Gener: </b>{{item.genre}}</p>
+  <p></p></div>
+  <button *ngIf="deleteB" (click)="delete(item.bookId)">Remove</button>
+    </div>
+  </div>
+
+  </body>
