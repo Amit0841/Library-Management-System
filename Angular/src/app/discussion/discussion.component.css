@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+width: 90%;
+margin: 0 auto;
+justify-content: center;
+}
+#DC{
+  padding-left: 10px;
+}
+#dic button{
+    padding: 10px 20px 10px 20px;
+    border-radius: 9px;
+    border: none;
+    background-color: rgb(52, 25, 128);
+    color: white;
+}
+#dic{background-color: rgba(52, 25, 128, 0.378);
+    width: calc(100% - 80px); 
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    display: flex;
+    border-radius: 9px;
+    margin-bottom: 30px;
+/* border: solid 1px black; */
+} 
+#createR{
+    justify-content: center;
+    margin:0 auto;
+}
+#createR button{ border-radius: 9px;
+    padding: 10px;
+    border: none;
+    background-color: rgb(52, 25, 128);
+    color: white;
+}
+/*  */
+/* Define styles for the container */
+.discussion-container {
+    top: 0;
+    margin-left: 40px; /* Add margin to separate it from other elements */
+  }
+  
+  /* Style the input and button */
+  .discussion-container input[type="text"] {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+  }
+  
+  .discussion-container button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .discussion-container button:hover {
+    background-color: #8fbcec;
+  }
+  

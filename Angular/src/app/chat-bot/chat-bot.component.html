@@ -1,0 +1,37 @@
+<body>
+
+    <div class="chat-container">
+        <h3 id="title"><u>Chat Bot</u></h3>
+        <p id="title2"><b>Created By:</b> Open Ai</p>
+
+      <div class="chat-messages" id="chat-messages">
+
+        <div *ngFor="let item of responceArr" id="responce">
+            <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo-CujXEB_pHNjg6VnEKrUJW-sgY-6glbQhw&usqp=CAU" alt="">  <p>Bot</p> </div>
+            
+            <pre id="chatRes">{{item}}</pre>
+
+         </div>
+
+        <div id="chat-user" *ngIf="l">
+          <div id="img">
+          <p>User</p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo-CujXEB_pHNjg6VnEKrUJW-sgY-6glbQhw&usqp=CAU" alt=""> </div>
+<div class="user">
+            <p>{{item}}</p>
+          </div>
+</div>
+
+<div *ngIf="loading" class="loading-screen">
+  <div class="loader"></div>
+  <p>Your response is generating, Please wait a moment...</p>
+  <button (click)="cancel()">Cancle</button>
+</div> 
+      </div>
+
+      <div class="chat-input">
+        <input [(ngModel)]="message" type="text" id="user-message" placeholder="Type your message...">
+        <button (click)="send()" >Send</button>
+      </div>
+    </div>
+    </body>

@@ -1,0 +1,28 @@
+<body>
+    <div class="payment-container">
+      <h1>Enter Your Payment Details</h1>
+  
+      <div class="book-details">
+        <p><strong>Book Name:</strong> {{title}}</p>
+        <p><strong>Price:</strong> ₹ {{price}}</p>
+        <p *ngIf="l"><strong >Valid For:</strong> {{days}}</p>
+      </div>
+  <hr>
+      <form id="payment-form">
+       
+        <label for="card-number">Card Number</label>
+        <input type="text" [(ngModel)]="card" id="card-number" name="card-number" placeholder="Enter card number" required>
+        
+        <label for="expiry">Expiration Date</label>
+        <input type="date" [(ngModel)]="date" id="expiry" name="expiry" placeholder="MM/YY" required>
+        
+        <label for="cvv">CVV</label>
+        <input type="text" [(ngModel)]="cvv" id="cvv" name="cvv" placeholder="CVV" required>
+        
+        <label for="name">Cardholder's Name</label>
+        <input type="text" [(ngModel)]="name" id="name" name="name" placeholder="Cardholder's Name" required>
+  
+        <button (click)="submit()" type="submit">Pay Now</button>
+      </form>
+    </div>
+  </body>
