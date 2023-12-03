@@ -1,6 +1,7 @@
 package com.masai.controller;
 
 import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.masai.model.Mail;
 import com.masai.service.EmailService;
 
 
@@ -21,7 +23,7 @@ public class MailSenderController {
 	
 	// Endpoint : http://localhost:8080/mail?email= YourMailId
 @PostMapping("/mail")
-	public ResponseEntity<String> sendEmail(@RequestParam String email) {
+	public ResponseEntity<Mail> sendEmail(@RequestParam String email) {
 	 Random random = new Random();
      int min = 1000; 
      int max = 9999; 
@@ -30,6 +32,7 @@ public class MailSenderController {
      String body2="Please enter this code in the designated field on the verification page to confirm and activate your email account. If you did not initiate this verification process, please disregard this email.";
 		EService.sendEmail(email, "Email Verification Code", body+" "+body2+"\n \n Thank you for choosing our service.");
 		 System.out.println("email send");
-		return new ResponseEntity<String>("email send",HttpStatus.ACCEPTED);
+		 Mail mail=new Mail(randomNumber-1,randomNumber);
+		return new ResponseEntity<Mail>(mail,HttpStatus.ACCEPTED);
 	}
 }

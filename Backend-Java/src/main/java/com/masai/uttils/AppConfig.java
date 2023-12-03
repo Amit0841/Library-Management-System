@@ -40,11 +40,11 @@ public class AppConfig {
 					return configuration;
 				}
 			});
-		}) .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST , "users", "books").permitAll()
+		}) .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST , "users", "books","mail").permitAll()
 				.requestMatchers("/swagger-ui*/**","/v3/api-docs/**").permitAll()
 				.requestMatchers(HttpMethod.GET,"chat" ,"books","books/**" ).permitAll()
 //				.requestMatchers(HttpMethod.GET,"users/wishList/**" ).permitAll()
-				.requestMatchers(HttpMethod.POST ,"books" ).permitAll()
+//				.requestMatchers(HttpMethod.POST ,"books" ).permitAll()
 //				.requestMatchers(HttpMethod.GET,"/hello","/users").hasRole("ADMIN")
 //				.requestMatchers(HttpMethod.DELETE,"/orders/**").hasRole("ADMIN")
 //				.requestMatchers(HttpMethod.POST, "/suppliers","/categories","/products/**").hasRole("ADMIN")
