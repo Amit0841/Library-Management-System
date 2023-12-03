@@ -2,7 +2,6 @@
     padding: 0;
     margin: 0;
 }
-@import "~@fortawesome/fontawesome-free/css/all.css";
 #div1 img{
     width:340px;
     border-radius: 9px;
@@ -49,7 +48,6 @@
 }
 #mainDiv{
     display: flex;
-   /* border: solid black 1px; */
     justify-content: center;
     margin: 0 auto;
     max-width: 800px; 
@@ -148,7 +146,13 @@ padding-bottom: 10px;
   left:47%;
   transform: translate(-50%, -50%);
 }
+#icon img{
+width: 40px;
+}
   @media (max-width: 910px) {
+    #icon img{
+      width: 5px;
+      }
     #div2{
       padding-left:30px ; padding-top:40px ;
   }

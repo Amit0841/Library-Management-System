@@ -1,5 +1,4 @@
 
-@import "~@fortawesome/fontawesome-free/css/all.css";
 *{
     margin: 0;
     padding: 0;
@@ -9,16 +8,13 @@ nav{
     background-color:  rgb(75, 6, 154);
     padding-top: 19px;padding-bottom: 10px;color: white;
 }
-
-  
-  /* Styles for the search button */
   .search-button {
-    width: 60px; /* Adjust width as needed */
-    height: 40px; /* Adjust height as needed */
-    border: 1px solid #ccc; /* Example border style */
-    border-radius: 5px; /* Example border radius */
-    background-color: #f0f0f0; /* Example background color */
-    margin-left: -1px; /* Adjust for a seamless look */
+    width: 60px; 
+    height: 40px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #f0f0f0; 
+    margin-left: -1px; 
   }
   
 #nav div {
