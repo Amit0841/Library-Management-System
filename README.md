@@ -3,19 +3,6 @@
 <h1> Project Description </h1>
 The Library Management System is a software solution designed to efficiently manage the operations of a library. The system aims to provide users, including librarians and students, with a platform to facilitate book management, rental transactions, and feedback collection. It enables librarians to perform administrative tasks related to books, track the status of student rentals, and view feedback and ratings provided by students. Students can access the system to explore available books, rent books, and provide feedback and ratings on rented books. The system will be developed using Java programming language, MySQL as the database management system, and Hibernate as the Object-Relational Mapping (ORM) framework.This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.1.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-
 ## **System Overview**
 
 The Old City Library is designed to efficiently manage library resources, including books, users, borrowing, and returning processes.
@@ -31,6 +18,16 @@ Access the Old City Library application through the following URL: **[https://Ol
 - Borrowing and Returning: Facilitate book borrowing and returning processes.
 - Search Functionality: Easily search for books based on various criteria.
 - Reports and Analytics: Generate reports on book availability, user activity, etc.
+
+## OpenAI Chatbot Integration
+
+This project incorporates an AI-driven chatbot by OpenAI to augment user interaction and support within the library system.
+
+### Chatbot Features
+
+- **Conversational Interface:**  book recommendations, and general assistance.
+  
+- **Personalized Recommendations:** Obtain tailored book suggestions based on reading preferences, genres, or specific titles.
 
 ## **Design Approach and Assumptions**
 
