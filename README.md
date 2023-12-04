@@ -61,7 +61,6 @@ This project incorporates an AI-driven chatbot by OpenAI to augment user interac
 - **`GET /books`** - Retrieve all books.
 - **`GET /books/:id`** - Retrieve book details.
 - **`POST /books`** - Add a new book.
-- **`PUT /books/:id`** - Update book details.
 - **`DELETE /books/:id`** - Delete a book.
 
 ### **Users**
@@ -69,15 +68,12 @@ This project incorporates an AI-driven chatbot by OpenAI to augment user interac
 - **`GET /users`** - Retrieve all users.
 - **`GET /users/:id`** - Retrieve user details.
 - **`POST /users`** - Add a new user.
-- **`PUT /users/:id`** - Update user details.
-- **`DELETE /users/:id`** - Delete a user.
-
 
 ## **Technology Stack**
 
 - Front-end: Angular
 - Back-end: Java, Spring Boot
-- Database: PostgreSQL or MySQL
+- Database: MySQL
 - Authentication: JWT Tokens
 - Version Control: Git
 
