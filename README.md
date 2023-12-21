@@ -68,7 +68,7 @@ This project incorporates an AI-driven chatbot by OpenAI to augment user interac
 - **`GET /users`** - Retrieve all users.
 - **`GET /users/:id`** - Retrieve user details.
 - **`POST /users`** - Add a new user.
-
+  
 ## **Technology Stack**
 
 - Front-end: Angular
